@@ -4,15 +4,15 @@ class Program
 {
     static void Main(string[] args) 
     {
-        List<Book> list = new List<Book>();
+        List<Book> books = new List<Book>();
         Book book1 = new Book(1, "Code With C#", "Mrs John", "Tech", true);
         Book book2 = new Book(2, "Python", "Mrs John", "Tech", true);
         Book book3 = new Book(3, "HTML", "Mrs John", "Tech", true);
-        list.Add(book2);
-        list.Add(book3);
-        list.Add(book1);
+        books.Add(book2);
+        books.Add(book3);
+        books.Add(book1);
 
-        foreach (Book book in list) 
+        foreach (Book book in books) 
         {
             Console.WriteLine(book.ID);
             Console.WriteLine(book.Title);
@@ -22,15 +22,15 @@ class Program
             Console.WriteLine();
         }
 
-        List<Member>lists = new List<Member>();
+        List<Member>members = new List<Member>();
         Member member1 = new Member(1, "Adan", "adan@gmail.com");
         Member member2 = new Member(2, "Ahmed", "ahmed@gmail.com");
         Member member3 = new Member(3, "Taha", "taha@gmail.com");
-        lists.Add(member1); 
-        lists.Add(member2); 
-        lists.Add(member3);
+        members.Add(member1); 
+        members.Add(member2); 
+        members.Add(member3);
 
-        foreach (Member member in lists) 
+        foreach (Member member in members) 
         {
             Console.WriteLine(member.ID);
             Console.WriteLine(member.Name);
