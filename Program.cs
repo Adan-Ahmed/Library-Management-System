@@ -39,7 +39,13 @@ class Program
         //    Console.WriteLine(member.Email);
         //    Console.WriteLine();
         //}
+        Book result = library.SearchBook();
+        Console.WriteLine($"Book Found: \n{result.Title} \n{result.Author} \n{result.Category} \n{result.IsAvailable}");
 
-    
+        if (result == null) 
+        {
+            Console.WriteLine("Book Not Found");
+        }
+
     }
 }
