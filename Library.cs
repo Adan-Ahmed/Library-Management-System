@@ -33,4 +33,41 @@
             Console.WriteLine();
         }
     }
+
+    public int GetID()
+    {
+        int id;
+        while (true) 
+        {
+            Console.WriteLine("Enter the Book ID you want to search:");
+            if(int.TryParse(Console.ReadLine(), out id))
+            {
+                if(id > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("ID must be greater than Zero");
+            }
+            else
+            {
+                Console.WriteLine("Enter the valid ID number");
+            }
+        }
+        return id;
+    }
+    public Book SearchBook()
+    {
+        int id = GetID();
+
+        foreach (Book book in books) 
+        {
+            if (book.ID == id)
+            {
+                Console.WriteLine("Book Found");
+                return book;
+            }
+        }
+        return null;
+
+    }
 }
