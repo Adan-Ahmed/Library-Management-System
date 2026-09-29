@@ -69,4 +69,34 @@
         return null;
 
     }
+
+    public void BorrowBook() 
+    {
+        Book book = SearchBook();
+        if (book == null)
+        {
+            Console.WriteLine("Book Not Found");
+            return;
+        }
+        if (book.IsAvailable == false)
+        {
+            Console.WriteLine("Book is already borrowed");
+            return;
+        }
+        else
+        {
+            book.IsAvailable = false;
+            Console.WriteLine("Book Borrowed Successfully");
+        }
+    }
+    
+    public Member SearchMember()
+    {
+        Console.WriteLine("Enter the Member ID");
+        GetID();
+        foreach (Member member in members) 
+        {
+
+        }
+    }
 }

@@ -40,7 +40,7 @@ class Program
         //    Console.WriteLine();
         //}
             Book result = library.SearchBook();
-
+                
             if (result == null)
             {
                 Console.WriteLine("Book Not Found");
@@ -49,6 +49,8 @@ class Program
             {
                 Console.WriteLine($"Book Found: \n{result.Title} \n{result.Author} \n{result.Category} \n{result.IsAvailable}"); 
             }
+
+        library.BorrowBook();
 
     }
 }
