@@ -55,6 +55,28 @@
         }
         return id;
     }
+    public int GetMemberID()
+    {
+        int id;
+        while (true)
+        {
+            Console.WriteLine("Enter the member ID you want to search:");
+            if (int.TryParse(Console.ReadLine(), out id))
+            {
+                if (id > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("ID must be greater than Zero");
+            }
+            else
+            {
+                Console.WriteLine("Enter the valid ID number");
+            }
+        }
+        return id;
+    }
+}
     public Book SearchBook()
     {
         int id = GetID();
@@ -93,10 +115,19 @@
     public Member SearchMember()
     {
         Console.WriteLine("Enter the Member ID");
-        GetID();
+        GetMemberID();
         foreach (Member member in members) 
         {
+            if(member.ID )
+            {
+                Console.WriteLine($"This is person who borrow the Book: \n{member.ID} : {member.Name}");
 
+            }
+            else
+            {
+                Console.WriteLine("Not any member is present");
+            }
         }
+        
     }
 }
