@@ -41,7 +41,7 @@ class Program
         //}
         Book bookresult = library.SearchBook();
                 
-        if (result == null)
+        if (bookresult == null)
         {
             Console.WriteLine("Book Not Found");
         }
