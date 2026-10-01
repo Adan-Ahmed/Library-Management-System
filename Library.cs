@@ -1,4 +1,5 @@
-﻿class Library 
+﻿using System;
+class Library 
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
@@ -115,10 +116,10 @@
     public Member SearchMember()
     {
         Console.WriteLine("Enter the Member ID");
-        GetMemberID();
+        int id = GetMemberID()
         foreach (Member member in members) 
         {
-            if(member.ID )
+            if(member.ID == id)
             {
                 Console.WriteLine($"This is person who borrow the Book: \n{member.ID} : {member.Name}");
 
