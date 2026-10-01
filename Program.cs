@@ -39,18 +39,29 @@ class Program
         //    Console.WriteLine(member.Email);
         //    Console.WriteLine();
         //}
-            Book result = library.SearchBook();
+        Book bookresult = library.SearchBook();
                 
-            if (result == null)
-            {
-                Console.WriteLine("Book Not Found");
-            }
-            else 
-            {
-                Console.WriteLine($"Book Found: \n{result.Title} \n{result.Author} \n{result.Category} \n{result.IsAvailable}"); 
-            }
+        if (result == null)
+        {
+            Console.WriteLine("Book Not Found");
+        }
+        else 
+        {
+            Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}"); 
+        }
 
         library.BorrowBook();
+
+        Member memberresults = library.SearchMember();
+
+        if (memberresults == null)
+        {
+            Console.WriteLine("Member Not Found");
+        }
+        else
+        {
+            Console.WriteLine($"{memberresults.ID} : {memberresults.Name}");
+        }
 
     }
 }

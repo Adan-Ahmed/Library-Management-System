@@ -1,5 +1,4 @@
-﻿using System;
-class Library 
+﻿class Library 
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
@@ -77,7 +76,7 @@ class Library
         }
         return id;
     }
-}
+
     public Book SearchBook()
     {
         int id = GetID();
@@ -115,20 +114,15 @@ class Library
     
     public Member SearchMember()
     {
-        Console.WriteLine("Enter the Member ID");
-        int id = GetMemberID()
+        int id = GetMemberID();
         foreach (Member member in members) 
         {
             if(member.ID == id)
             {
-                Console.WriteLine($"This is person who borrow the Book: \n{member.ID} : {member.Name}");
-
-            }
-            else
-            {
-                Console.WriteLine("Not any member is present");
+                return member;  
             }
         }
+        return null;
         
     }
 }
