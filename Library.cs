@@ -79,6 +79,7 @@
 
     public Book SearchBook()
     {
+
         int id = GetID();
 
         foreach (Book book in books) 
@@ -89,17 +90,27 @@
             }
         }
         return null;
+        
+
 
     }
 
     public void BorrowBook() 
     {
+        Member member = SearchMember();
+        if (member == null)
+        {
+            Console.WriteLine("Member not found");
+            return;
+        }
         Book book = SearchBook();
+
         if (book == null)
         {
             Console.WriteLine("Book Not Found");
             return;
         }
+
         if (book.IsAvailable == false)
         {
             Console.WriteLine("Book is already borrowed");
@@ -108,8 +119,11 @@
         else
         {
             book.IsAvailable = false;
+            member.BorrowBooks.Add(book);
             Console.WriteLine("Book Borrowed Successfully");
+                
         }
+
     }
     
     public Member SearchMember()
