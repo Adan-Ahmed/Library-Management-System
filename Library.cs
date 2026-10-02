@@ -119,7 +119,7 @@
         else
         {
             book.IsAvailable = false;
-            member.BorrowBooks.Add(book);
+            member.BorrowedBooks.Add(book);
             Console.WriteLine("Book Borrowed Successfully");
                 
         }
