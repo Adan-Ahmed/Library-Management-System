@@ -11,7 +11,17 @@ class Program
         bool availability = library.GetBookAvailability();
         Book book = new Book(id, title, author, category, availability);
         library.AddBook(book);
-    }   
+    }
+    static void AddMember(Library library)
+    {
+        int id = library.GetMemberID();
+        string title = library.();
+        string author = library.GetBookAuthor();
+        string category = library.GetBookCategory();
+        bool availability = library.GetBookAvailability();
+        Book book = new Book(id, title, author, category, availability);
+        library.AddBook(book);
+    }
     static void Main(string[] args) 
     {
         Library library = new Library();
@@ -35,12 +45,13 @@ class Program
         //}
 
 
-        Member member1 = new Member(1, "Adan", "adan@gmail.com");
-        Member member2 = new Member(2, "Ahmed", "ahmed@gmail.com");
-        Member member3 = new Member(3, "Taha", "taha@gmail.com");
-        library.AddMember(member1); 
-        library.AddMember(member2); 
-        library.AddMember(member3);
+        //Member member1 = new Member(1, "Adan", "adan@gmail.com");
+        //Member member2 = new Member(2, "Ahmed", "ahmed@gmail.com");
+        //Member member3 = new Member(3, "Taha", "taha@gmail.com");
+        //library.AddMember(member1); 
+        //library.AddMember(member2); 
+        //library.AddMember(member3);
+        AddMem
         library.ViewMembers();
 
         //foreach (Member member in members) 

@@ -194,7 +194,40 @@ class Library
         }
         return id;
     }
+    public string GetMemberName()
+    {
+        string name;
+        while (true)
+        {
+            Console.WriteLine("Enter the member name: ");
+            name = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Please enter a valid name");
+                continue;
+            }
+            break;
+        }
+        return name;
+    }
+    public string GetMemberEmail()
+    {
+        string Email;
+        while (true)
+        {
+            Console.WriteLine("Enter the Member Email: ");
+            Email = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                Console.WriteLine("Please enter a valid Email");
+                continue;
+            }
+            break;
+        }
+        return Email;
+    }
     public Book SearchBook()
     {
 
