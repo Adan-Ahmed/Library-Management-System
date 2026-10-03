@@ -222,6 +222,11 @@
                 Console.WriteLine("Please enter a valid Email");
                 continue;
             }
+            if(!Email.Contains("@") || !Email.Contains(".")) 
+            {
+                Console.WriteLine("Please enter a valid Email format");
+                continue;
+            }
             break;
         }
         return Email;
@@ -305,7 +310,7 @@
         
                 foreach(Book book in member.BorrowedBooks) 
         {
-            Console.WriteLine($"Book ID:{book.ID} \n Book Title{book.Title}");
+            Console.WriteLine($"Book ID:{book.ID} \n Book Title: {book.Title}");
         }
     }
 
