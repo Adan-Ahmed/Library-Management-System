@@ -2,16 +2,27 @@
 
 class Program 
 {
+    static void AddBook(Library library) 
+    {
+        int id = library.GetBookID();
+        string title = library.GetBookTitle();
+        string author = library.GetBookAuthor();
+        string category = library.GetBookCategory();
+        bool availability = library.GetBookAvailability();
+        Book book = new Book(id, title, author, category, availability);
+        library.AddBook(book);
+    }   
     static void Main(string[] args) 
     {
         Library library = new Library();
 
-        Book book1 = new Book(1, "Code With C#", "Mrs John", "Tech", true);
-        Book book2 = new Book(2, "Python", "Mrs John", "Tech", true);
-        Book book3 = new Book(3, "HTML", "Mrs John", "Tech", true);
-        library.AddBook(book1);
-        library.AddBook(book2);
-        library.AddBook(book3);
+        //Book book1 = new Book(1, "Code With C#", "Mrs John", "Tech", true);
+        //Book book2 = new Book(2, "Python", "Mrs John", "Tech", true);
+        //Book book3 = new Book(3, "HTML", "Mrs John", "Tech", true);
+        //library.AddBook(book1);
+        //library.AddBook(book2);
+        //library.AddBook(book3);
+        AddBook(library);
         library.ViewBooks();
         //foreach (Book book  in books) 
         //{
