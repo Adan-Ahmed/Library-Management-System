@@ -310,7 +310,7 @@
         
                 foreach(Book book in member.BorrowedBooks) 
         {
-            Console.WriteLine($"Book ID:{book.ID} \n Book Title: {book.Title}");
+            Console.WriteLine($"Book ID:{book.ID} \nBook Title: {book.Title}");
         }
     }
 
