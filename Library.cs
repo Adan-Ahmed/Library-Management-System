@@ -152,7 +152,7 @@ class Library
             continue;
         }
     }
-    public int GetID()
+    public int GetSearchBookID()
     {
         int id;
         while (true) 
@@ -178,7 +178,7 @@ class Library
         int id;
         while (true)
         {
-            Console.WriteLine("Enter the member ID you want to search:");
+            Console.WriteLine("Enter the member ID:");
             if (int.TryParse(Console.ReadLine(), out id))
             {
                 if (id > 0)
@@ -231,7 +231,7 @@ class Library
     public Book SearchBook()
     {
 
-        int id = GetID();
+        int id = GetSearchBookID();
 
         foreach (Book book in books) 
         {
@@ -319,7 +319,7 @@ class Library
             Console.WriteLine("Member not found");
             return;
         }
-        int id = GetID();
+        int id = GetSearchBookID();
         Book foundbook = null;
 
         foreach (Book book in member.BorrowedBooks)
@@ -330,6 +330,8 @@ class Library
                 break;
             }
         }
+        
+
         if (foundbook == null)
         {
             Console.WriteLine("This member did not borrow this book"); 
@@ -338,7 +340,6 @@ class Library
         Console.WriteLine($"Book found successfully: \n{foundbook.ID} : {foundbook.Title}");
         foundbook.IsAvailable = true;
         member.BorrowedBooks.Remove(foundbook);
-        Console.WriteLine("Book remove successfully");
-
+        Console.WriteLine("Book returned successfully");
     }
 }

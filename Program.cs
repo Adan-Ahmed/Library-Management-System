@@ -15,12 +15,10 @@ class Program
     static void AddMember(Library library)
     {
         int id = library.GetMemberID();
-        string title = library.();
-        string author = library.GetBookAuthor();
-        string category = library.GetBookCategory();
-        bool availability = library.GetBookAvailability();
-        Book book = new Book(id, title, author, category, availability);
-        library.AddBook(book);
+        string name = library.GetMemberName();
+        string email = library.GetMemberEmail();
+        Member member = new Member(id, name, email);
+        library.AddMember(member);
     }
     static void Main(string[] args) 
     {
@@ -51,7 +49,7 @@ class Program
         //library.AddMember(member1); 
         //library.AddMember(member2); 
         //library.AddMember(member3);
-        AddMem
+        AddMember(library);
         library.ViewMembers();
 
         //foreach (Member member in members) 
