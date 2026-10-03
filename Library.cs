@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-class Library 
+﻿class Library 
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
@@ -341,5 +339,31 @@ class Library
         foundbook.IsAvailable = true;
         member.BorrowedBooks.Remove(foundbook);
         Console.WriteLine("Book returned successfully");
+    }
+
+    public int GetChoice()
+    {
+        int choice;
+
+        while (true)
+        {
+            Console.WriteLine("Enter your choice: 1 to 9");
+
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                if (choice >= 1 && choice <= 7)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Choice must be between 1 and 9.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid choice number.");
+            }
+        }
+
+        return choice;
     }
 }

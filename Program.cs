@@ -23,6 +23,24 @@ class Program
     static void Main(string[] args) 
     {
         Library library = new Library();
+        while (true) 
+        {
+            Console.WriteLine();
+            Console.WriteLine("========== Library Management System ==========");
+            Console.WriteLine("1. Add Book");
+            Console.WriteLine("2. View Book");
+            Console.WriteLine("3. Search Book");
+            Console.WriteLine("4. Add Member");
+            Console.WriteLine("5. View Members");
+            Console.WriteLine("6. Borrow Book");
+            Console.WriteLine("7. Return Book");
+            Console.WriteLine("8. View Borrowed Books");
+            Console.WriteLine("9. Exit");
+
+            int choice = library.GetChoice();
+
+
+        }
 
         //Book book1 = new Book(1, "Code With C#", "Mrs John", "Tech", true);
         //Book book2 = new Book(2, "Python", "Mrs John", "Tech", true);
