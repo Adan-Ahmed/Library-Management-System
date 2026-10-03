@@ -347,16 +347,16 @@
 
         while (true)
         {
-            Console.WriteLine("Enter your choice: 1 to 9");
+            Console.WriteLine("Enter your choice: 1 to 10");
 
             if (int.TryParse(Console.ReadLine(), out choice))
             {
-                if (choice >= 1 && choice <= 7)
+                if (choice >= 1 && choice <= 10)
                 {
                     break;
                 }
 
-                Console.WriteLine("Choice must be between 1 and 9.");
+                Console.WriteLine("Choice must be between 1 and 10.");
             }
             else
             {

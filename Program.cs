@@ -32,13 +32,93 @@ class Program
             Console.WriteLine("3. Search Book");
             Console.WriteLine("4. Add Member");
             Console.WriteLine("5. View Members");
-            Console.WriteLine("6. Borrow Book");
-            Console.WriteLine("7. Return Book");
-            Console.WriteLine("8. View Borrowed Books");
-            Console.WriteLine("9. Exit");
+            Console.WriteLine("6. Search Members");
+            Console.WriteLine("7. Borrow Book");
+            Console.WriteLine("8. Return Book");
+            Console.WriteLine("9. View Borrowed Books");
+            Console.WriteLine("10. Exit");
 
             int choice = library.GetChoice();
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("Add Book Selected");
+                    AddBook(library);
+                    break;
 
+                case 2:
+                    Console.WriteLine();
+                    Console.WriteLine("View Book Selected");
+                    library.ViewBooks();
+                    break;
+
+                case 3:
+                    Console.WriteLine();
+                    Console.WriteLine("Search Book Selected");
+                    
+                    Book bookresult = library.SearchBook();
+
+                    if (bookresult == null)
+                    {
+                        Console.WriteLine("Book Not Found");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}");
+                    }
+
+                    break;
+
+                case 4:
+                    Console.WriteLine();
+                    Console.WriteLine("Add Member Selected");
+                    AddMember(library);
+                    break;
+
+                case 5:
+                    Console.WriteLine();
+                    Console.WriteLine("View Member Selected");
+                    library.ViewMembers();
+                    break;
+
+                case 6:
+                    Console.WriteLine();
+                    Console.WriteLine("Search Member Selected");
+                    Member memberresults = library.SearchMember();
+
+                    if (memberresults == null)
+                    {
+                        Console.WriteLine("Member Not Found");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{memberresults.ID} : {memberresults.Name}");
+                    }
+                    break;
+
+                case 7:
+                    Console.WriteLine();
+                    Console.WriteLine("Borrow Book Selected");
+                    library.BorrowBook();
+                    break;
+
+                case 8:
+                    Console.WriteLine();
+                    Console.WriteLine("Return Book");
+                    library.ReturnBook();
+                    break;
+
+                case 9:
+                    Console.WriteLine();
+                    Console.WriteLine("View Borrowed Books Selected");
+                    library.ViewBorrowedBooks();
+                    break;
+
+                case 10:
+                    Console.WriteLine("Thank you for using Library Management System.");
+                    return;
+
+            }
 
         }
 
@@ -48,8 +128,8 @@ class Program
         //library.AddBook(book1);
         //library.AddBook(book2);
         //library.AddBook(book3);
-        AddBook(library);
-        library.ViewBooks();
+        //AddBook(library);
+        //library.ViewBooks();
         //foreach (Book book  in books) 
         //{
         //    Console.WriteLine(book.ID);
@@ -67,8 +147,8 @@ class Program
         //library.AddMember(member1); 
         //library.AddMember(member2); 
         //library.AddMember(member3);
-        AddMember(library);
-        library.ViewMembers();
+        //AddMember(library);
+        //library.ViewMembers();
 
         //foreach (Member member in members) 
         //{
@@ -77,29 +157,29 @@ class Program
         //    Console.WriteLine(member.Email);
         //    Console.WriteLine();
         //}
-        Book bookresult = library.SearchBook();
+        //Book bookresult = library.SearchBook();
                 
-        if (bookresult == null)
-        {
-            Console.WriteLine("Book Not Found");
-        }
-        else 
-        {
-            Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}"); 
-        }
+        //if (bookresult == null)
+        //{
+        //    Console.WriteLine("Book Not Found");
+        //}
+        //else 
+        //{
+        //    Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}"); 
+        //}
 
-        library.BorrowBook();
+        //library.BorrowBook();
 
-        Member memberresults = library.SearchMember();
+        //Member memberresults = library.SearchMember();
 
-        if (memberresults == null)
-        {
-            Console.WriteLine("Member Not Found");
-        }
-        else
-        {
-            Console.WriteLine($"{memberresults.ID} : {memberresults.Name}");
-        }
+        //if (memberresults == null)
+        //{
+        //    Console.WriteLine("Member Not Found");
+        //}
+        //else
+        //{
+        //    Console.WriteLine($"{memberresults.ID} : {memberresults.Name}");
+        //}
 
     }
 }
