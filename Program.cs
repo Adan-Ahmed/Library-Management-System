@@ -20,6 +20,7 @@ class Program
         Member member = new Member(id, name, email);
         library.AddMember(member);
     }
+
     static void Main(string[] args) 
     {
         Library library = new Library();
@@ -36,7 +37,9 @@ class Program
             Console.WriteLine("7. Borrow Book");
             Console.WriteLine("8. Return Book");
             Console.WriteLine("9. View Borrowed Books");
-            Console.WriteLine("10. Exit");
+            Console.WriteLine("10. Update Books");
+            Console.WriteLine("11. View Borrowed Books");
+            Console.WriteLine("12. Exit");
 
             int choice = library.GetChoice();
             switch (choice)
@@ -55,16 +58,40 @@ class Program
                 case 3:
                     Console.WriteLine();
                     Console.WriteLine("Search Book Selected");
-                    
-                    Book bookresult = library.SearchBook();
+                    Console.WriteLine("Search Book\r\n1. Search by ID\r\n2. Search by Title");
 
-                    if (bookresult == null)
+                    int choose = library.GetChoose();
+
+                    switch (choose) 
                     {
-                        Console.WriteLine("Book Not Found");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}");
+                        case 1:
+                            Console.WriteLine("Search by ID Selected");
+                            Book bookresult = library.SearchBook();
+
+                            if (bookresult == null)
+                            {
+                                Console.WriteLine("Book Not Found");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Book Found: \n{bookresult.Title} \n{bookresult.Author} \n{bookresult.Category} \n{bookresult.IsAvailable}");
+                            }
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Search by Title Selected");
+                            Book booktitle = library.SearchBookByTitle();
+
+                            if (booktitle == null) 
+                            {
+                                Console.WriteLine("Book title Not Found");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Book Found: \n{booktitle.Title} \n{booktitle.Author} \n{booktitle.Category} \n{booktitle.IsAvailable}");
+                            }
+
+                            break;
                     }
 
                     break;
@@ -115,6 +142,12 @@ class Program
                     break;
 
                 case 10:
+                    Console.WriteLine();
+                    Console.WriteLine("Update Books Selected");
+
+                    break;
+
+                case 11:
                     Console.WriteLine("Thank you for using Library Management System.");
                     return;
 

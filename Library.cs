@@ -1,13 +1,15 @@
-﻿class Library 
+﻿using System.Security.Cryptography.X509Certificates;
+
+class Library
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
 
-    public void AddBook( Book book)
-    {   
-        foreach (Book existingbook in books) 
+    public void AddBook(Book book)
+    {
+        foreach (Book existingbook in books)
         {
-            if(existingbook.ID == book.ID) 
+            if (existingbook.ID == book.ID)
             {
                 Console.WriteLine("Book Already Exists");
                 return;
@@ -15,7 +17,7 @@
         }
         books.Add(book);
     }
-    public void AddMember( Member member)
+    public void AddMember(Member member)
     {
         foreach (Member existingmember in members)
         {
@@ -27,7 +29,7 @@
         }
         members.Add(member);
     }
-    public void ViewBooks() 
+    public void ViewBooks()
     {
         foreach (Book book in books)
         {
@@ -39,7 +41,7 @@
             Console.WriteLine();
         }
     }
-    public void ViewMembers() 
+    public void ViewMembers()
     {
         foreach (Member member in members)
         {
@@ -71,7 +73,7 @@
         return id;
     }
 
-    public string GetBookTitle() 
+    public string GetBookTitle()
     {
         string title;
         while (true)
@@ -79,7 +81,7 @@
             Console.WriteLine("Enter the Book Title: ");
             title = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(title)) 
+            if (string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Please enter a valid title");
                 continue;
@@ -117,7 +119,7 @@
             if (string.IsNullOrWhiteSpace(category))
             {
                 Console.WriteLine("Please enter a valid Category");
-                continue;   
+                continue;
             }
 
             if (category.Length > 20)
@@ -130,19 +132,19 @@
         return category;
     }
 
-    public bool GetBookAvailability() 
+    public bool GetBookAvailability()
     {
         string Availabilty;
-        while (true) 
+        while (true)
         {
             Console.WriteLine("Enter the Book Availabilty: ");
             Availabilty = Console.ReadLine();
             Availabilty = Availabilty.ToLowerInvariant();
-            if(Availabilty == "yes")
+            if (Availabilty == "yes")
             {
                 return true;
-            } 
-            if(Availabilty == "no")
+            }
+            if (Availabilty == "no")
             {
                 return false;
             }
@@ -153,12 +155,12 @@
     public int GetSearchBookID()
     {
         int id;
-        while (true) 
+        while (true)
         {
             Console.WriteLine("Enter the Book ID you want to search:");
-            if(int.TryParse(Console.ReadLine(), out id))
+            if (int.TryParse(Console.ReadLine(), out id))
             {
-                if(id > 0)
+                if (id > 0)
                 {
                     break;
                 }
@@ -222,7 +224,7 @@
                 Console.WriteLine("Please enter a valid Email");
                 continue;
             }
-            if(!Email.Contains("@") || !Email.Contains(".")) 
+            if (!Email.Contains("@") || !Email.Contains("."))
             {
                 Console.WriteLine("Please enter a valid Email format");
                 continue;
@@ -236,7 +238,7 @@
 
         int id = GetSearchBookID();
 
-        foreach (Book book in books) 
+        foreach (Book book in books)
         {
             if (book.ID == id)
             {
@@ -244,12 +246,12 @@
             }
         }
         return null;
-        
+
 
 
     }
 
-    public void BorrowBook() 
+    public void BorrowBook()
     {
         Member member = SearchMember();
         if (member == null)
@@ -275,25 +277,25 @@
             book.IsAvailable = false;
             member.BorrowedBooks.Add(book);
             Console.WriteLine("Book Borrowed Successfully");
-                
+
         }
 
     }
-    
+
     public Member SearchMember()
     {
         int id = GetMemberID();
-        foreach (Member member in members) 
+        foreach (Member member in members)
         {
-            if(member.ID == id)
+            if (member.ID == id)
             {
-                return member;  
+                return member;
             }
         }
         return null;
     }
 
-    public void ViewBorrowedBooks() 
+    public void ViewBorrowedBooks()
     {
         Member member = SearchMember();
         if (member == null)
@@ -302,19 +304,19 @@
             return;
         }
 
-        if(member.BorrowedBooks.Count == 0) 
+        if (member.BorrowedBooks.Count == 0)
         {
             Console.WriteLine("This member has no borrowed books");
             return;
         }
-        
-                foreach(Book book in member.BorrowedBooks) 
+
+        foreach (Book book in member.BorrowedBooks)
         {
             Console.WriteLine($"Book ID:{book.ID} \nBook Title: {book.Title}");
         }
     }
 
-    public void ReturnBook() 
+    public void ReturnBook()
     {
         Member member = SearchMember();
         if (member == null)
@@ -328,16 +330,16 @@
         foreach (Book book in member.BorrowedBooks)
         {
             if (id == book.ID)
-            { 
+            {
                 foundbook = book;
                 break;
             }
         }
-        
+
 
         if (foundbook == null)
         {
-            Console.WriteLine("This member did not borrow this book"); 
+            Console.WriteLine("This member did not borrow this book");
             return;
         }
         Console.WriteLine($"Book found successfully: \n{foundbook.ID} : {foundbook.Title}");
@@ -370,5 +372,59 @@
         }
 
         return choice;
+    }
+    public Book SearchBookByTitle()
+    {
+        string title;
+        Console.WriteLine("Enter the Title of Book");
+        title = Console.ReadLine();
+
+        foreach (Book book in books)
+        {
+            if (book.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()))
+            {
+                return book;
+            }
+
+        }
+        return null;
+    }
+
+    public int GetChoose()
+    {
+        int choose;
+
+        while (true)
+        {
+            Console.WriteLine("Enter your choice (1 or 2):");
+
+            if (int.TryParse(Console.ReadLine(), out choose))
+            {
+                if (choose >= 1 && choose <= 2)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Choice must be either 1 or 2.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid choice number.");
+            }
+        }
+
+        return choose;
+    }
+
+    public Book UpdateBook() 
+    {
+        Book book = SearchBook();
+        while (true) 
+        {
+            if(book == null)
+            {
+                return null;
+            }  
+        }
     }
 }
