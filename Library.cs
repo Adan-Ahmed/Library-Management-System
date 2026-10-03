@@ -1,14 +1,32 @@
-﻿class Library 
+﻿using System.ComponentModel.DataAnnotations;
+
+class Library 
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
 
     public void AddBook( Book book)
-    {
+    {   
+        foreach (Book existingbook in books) 
+        {
+            if(existingbook.ID == book.ID) 
+            {
+                Console.WriteLine("Book Already Exists");
+                return;
+            }
+        }
         books.Add(book);
     }
     public void AddMember( Member member)
     {
+        foreach (Member existingmember in members)
+        {
+            if (existingmember.ID == member.ID)
+            {
+                Console.WriteLine("Member Already Exists");
+                return;
+            }
+        }
         members.Add(member);
     }
     public void ViewBooks() 
@@ -33,7 +51,107 @@
             Console.WriteLine();
         }
     }
+    public int GetBookID()
+    {
+        int id;
+        while (true)
+        {
+            Console.WriteLine("Enter the Book ID: ");
+            if (int.TryParse(Console.ReadLine(), out id))
+            {
+                if (id > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("ID must be greater than Zero");
+            }
+            else
+            {
+                Console.WriteLine("Enter the valid ID number");
+            }
+        }
+        return id;
+    }
 
+    public string GetBookTitle() 
+    {
+        string title;
+        while (true)
+        {
+            Console.WriteLine("Enter the Book Title: ");
+            title = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(title)) 
+            {
+                Console.WriteLine("Please enter a valid title");
+                continue;
+            }
+            break;
+        }
+        return title;
+    }
+    public string GetBookAuthor()
+    {
+        string author;
+        while (true)
+        {
+            Console.WriteLine("Enter the Book Author: ");
+            author = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(author))
+            {
+                Console.WriteLine("Please enter a valid Author");
+                continue;
+            }
+            break;
+        }
+        return author;
+    }
+
+    public string GetBookCategory()
+    {
+        string category;
+        while (true)
+        {
+            Console.WriteLine("Enter the Book Category: ");
+            category = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                Console.WriteLine("Please enter a valid Category");
+                continue;   
+            }
+
+            if (category.Length > 20)
+            {
+                Console.WriteLine("Category must be 20 characters or less");
+                continue;
+            }
+            break;
+        }
+        return category;
+    }
+
+    public bool GetBookAvailability() 
+    {
+        string Availabilty;
+        while (true) 
+        {
+            Console.WriteLine("Enter the Book Availabilty: ");
+            Availabilty = Console.ReadLine();
+            Availabilty = Availabilty.ToLowerInvariant();
+            if(Availabilty == "yes")
+            {
+                return true;
+            } 
+            if(Availabilty == "no")
+            {
+                return false;
+            }
+            Console.WriteLine("Enter valid Input ");
+            continue;
+        }
+    }
     public int GetID()
     {
         int id;
