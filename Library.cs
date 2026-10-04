@@ -1,4 +1,6 @@
-﻿class Library
+﻿using System.Reflection.Metadata.Ecma335;
+
+class Library
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
@@ -562,6 +564,42 @@
 
         return updatemember;
     }
+
+    public void DeleteBook() 
+    {
+        Book book = SearchBook();
+        if (book == null)
+        {
+            Console.WriteLine("Book Not Found");
+            return;
+        }
+
+        if (book.IsAvailable == false)
+        {
+            Console.WriteLine("Book is already borrowed");
+            return;
+        }
+        books.Remove(book);
+        Console.WriteLine("Book deleted Successfully");
+    }
+    public void DeleteMember()
+    {
+        Member member = SearchMember();
+        if (member == null)
+        {
+            Console.WriteLine("Member Not Found");
+            return;
+        }
+        if(member.BorrowedBooks.Count > 0) 
+        {
+            Console.WriteLine("Member has borrowed books.\r\nCannot delete member.");
+            return;
+        }
+        members.Remove(member);
+        Console.WriteLine("Member removed Successfully");
+
+    }
+    
 }
 
 

@@ -157,13 +157,13 @@ class Program
                 case 12:
                     Console.WriteLine();
                     Console.WriteLine("Delete Book Selected");
-
+                    library.DeleteBook();
                     break;
 
                 case 13:
                     Console.WriteLine();
                     Console.WriteLine("Delete Member Selected");
-
+                    library.DeleteMember();
                     break;
 
 
