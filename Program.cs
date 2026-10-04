@@ -60,7 +60,7 @@ class Program
                     Console.WriteLine("Search Book Selected");
                     Console.WriteLine("Search Book\r\n1. Search by ID\r\n2. Search by Title");
 
-                    int choose = library.GetChoose();
+                    int choose = library.GetSearchChoice();
 
                     switch (choose) 
                     {
@@ -144,6 +144,25 @@ class Program
                 case 10:
                     Console.WriteLine();
                     Console.WriteLine("Update Books Selected");
+
+                    Console.WriteLine("What do you want to update?");
+                    Console.WriteLine("1. Title");
+                    Console.WriteLine("2. Author");
+                    Console.WriteLine("3. Category");
+
+                    int updatechoice = library.GetUpdateChoice();
+
+                    switch (updatechoice) 
+                    {
+                        case 1:
+                            break;
+
+                        case 2:
+                            break;
+
+                        case 3:
+                            break;
+                    }
 
                     break;
 

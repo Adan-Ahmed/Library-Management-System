@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
 
 class Library
 {
@@ -390,7 +391,7 @@ class Library
         return null;
     }
 
-    public int GetChoose()
+    public int GetSearchChoice()
     {
         int choose;
 
@@ -424,6 +425,33 @@ class Library
         {
             return null;
         }
+
+    }
+    public int GetUpdateChoice() 
+    {
+        int  updatechoice;
+
+        while (true)
+        {
+            Console.WriteLine("Enter your choice 1 to 3:");
+
+            if (int.TryParse(Console.ReadLine(), out updatechoice))
+            {
+                if (updatechoice >= 1 && updatechoice <= 3)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Choice must be 1 to 2.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid choice number.");
+            }
+        }
+
+        return updatechoice;
     }
 }
+
 
