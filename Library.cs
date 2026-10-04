@@ -416,15 +416,14 @@ class Library
         return choose;
     }
 
-    public Book UpdateBook() 
+    public Book UpdateBook()
     {
         Book book = SearchBook();
-        while (true) 
+
+        if (book == null)
         {
-            if(book == null)
-            {
-                return null;
-            }  
+            return null;
         }
     }
 }
+
