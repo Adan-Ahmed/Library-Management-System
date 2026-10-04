@@ -436,12 +436,38 @@ class Library
         switch (updatechoice)
         {
             case 1:
+                Console.WriteLine();
+                Console.WriteLine("Update Title Selected");
+
+                string newtitle = GetBookTitle();
+                book.Title = newtitle;
+
+                Console.WriteLine($"Book title updated to: {book.Title}");
+
                 break;
 
             case 2:
+
+                Console.WriteLine();
+                Console.WriteLine("Update Author Selected");
+
+                string newauthor = GetBookAuthor();
+                book.Author = newauthor;
+
+                Console.WriteLine($"Book Author updated to: {book.Author}");
+
                 break;
 
             case 3:
+
+                Console.WriteLine();
+                Console.WriteLine("Update Category Selected");
+
+                string newcategory = GetBookCategory();
+                book.Category = newcategory;
+
+                Console.WriteLine($"Book Category updated to: {book.Category}");
+
                 break;
         }
         return book;
