@@ -38,7 +38,9 @@ class Program
             Console.WriteLine("9. View Borrowed Books");
             Console.WriteLine("10. Update Books");
             Console.WriteLine("11. Update Member");
-            Console.WriteLine("12. Exit");
+            Console.WriteLine("12. Delete Book");
+            Console.WriteLine("13. Delete Member");
+            Console.WriteLine("14. Exit");
 
             int choice = library.GetChoice();
             switch (choice)
