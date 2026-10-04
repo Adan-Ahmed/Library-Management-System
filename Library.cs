@@ -352,16 +352,16 @@
 
         while (true)
         {
-            Console.WriteLine("Enter your choice: 1 to 10");
+            Console.WriteLine("Enter your choice: 1 to 14");
 
             if (int.TryParse(Console.ReadLine(), out choice))
             {
-                if (choice >= 1 && choice <= 10)
+                if (choice >= 1 && choice <= 14)
                 {
                     break;
                 }
 
-                Console.WriteLine("Choice must be between 1 and 10.");
+                Console.WriteLine("Choice must be between 1 and 14.");
             }
             else
             {
@@ -493,6 +493,74 @@
         }
 
         return updatechoice;
+    }
+
+    public Member UpdateMember()
+    {
+        Member member = SearchMember();
+
+        if (member == null)
+        {
+            Console.WriteLine("Member Not Found");
+            return null;
+        }
+        Console.WriteLine("What do you want to update?");
+        Console.WriteLine("1. Name");
+        Console.WriteLine("2. Email");
+
+        int updatemember = GetUpdateMember();
+
+        switch (updatemember)
+        {
+            case 1:
+                Console.WriteLine();
+                Console.WriteLine("Update Name Selected");
+
+                string newname = GetMemberName();
+                member.Name = newname;
+
+                Console.WriteLine($"Member Name updated to: {member.Name}");
+
+                break;
+
+            case 2:
+
+                Console.WriteLine();
+                Console.WriteLine("Update Email Selected");
+
+                string newemail = GetMemberEmail();
+                member.Email = newemail;
+
+                Console.WriteLine($"Member Email updated to: {member.Email}");
+
+                break;
+        }
+        return member;
+    }
+    public int GetUpdateMember()
+    {
+        int updatemember;
+
+        while (true)
+        {
+            Console.WriteLine("Enter your choice 1 or 2:");
+
+            if (int.TryParse(Console.ReadLine(), out updatemember))
+            {
+                if (updatemember >= 1 && updatemember <= 2)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Choice must be either 1 or 2.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid choice number.");
+            }
+        }
+
+        return updatemember;
     }
 }
 

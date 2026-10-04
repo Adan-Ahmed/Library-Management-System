@@ -37,7 +37,8 @@ class Program
             Console.WriteLine("8. Return Book");
             Console.WriteLine("9. View Borrowed Books");
             Console.WriteLine("10. Update Books");
-            Console.WriteLine("11. Exit");
+            Console.WriteLine("11. Update Member");
+            Console.WriteLine("12. Exit");
 
             int choice = library.GetChoice();
             switch (choice)
@@ -147,6 +148,26 @@ class Program
                     break;
 
                 case 11:
+                    Console.WriteLine();
+                    Console.WriteLine("Update Members Selected");
+                    library.UpdateMember();
+
+                    break;
+
+                case 12:
+                    Console.WriteLine();
+                    Console.WriteLine("Delete Book Selected");
+
+                    break;
+
+                case 13:
+                    Console.WriteLine();
+                    Console.WriteLine("Delete Member Selected");
+
+                    break;
+
+
+                case 14:
                     Console.WriteLine("Thank you for using Library Management System.");
                     return;
             }
