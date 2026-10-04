@@ -97,22 +97,5 @@
         books.Remove(book);
         Console.WriteLine("Book deleted Successfully");
     }
-    public void DeleteMember()
-    {
-        Member member = SearchMember();
-        if (member == null)
-        {
-            Console.WriteLine("Member Not Found");
-            return;
-        }
-        if (member.BorrowedBooks.Count > 0)
-        {
-            Console.WriteLine("Member has borrowed books.\r\nCannot delete member.");
-            return;
-        }
-        members.Remove(member);
-        Console.WriteLine("Member removed Successfully");
-
-    }
-
+ 
 }
