@@ -38,8 +38,7 @@ class Program
             Console.WriteLine("8. Return Book");
             Console.WriteLine("9. View Borrowed Books");
             Console.WriteLine("10. Update Books");
-            Console.WriteLine("11. View Borrowed Books");
-            Console.WriteLine("12. Exit");
+            Console.WriteLine("11. Exit");
 
             int choice = library.GetChoice();
             switch (choice)
@@ -145,24 +144,7 @@ class Program
                     Console.WriteLine();
                     Console.WriteLine("Update Books Selected");
 
-                    Console.WriteLine("What do you want to update?");
-                    Console.WriteLine("1. Title");
-                    Console.WriteLine("2. Author");
-                    Console.WriteLine("3. Category");
 
-                    int updatechoice = library.GetUpdateChoice();
-
-                    switch (updatechoice) 
-                    {
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
 
                     break;
 

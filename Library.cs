@@ -423,9 +423,28 @@ class Library
 
         if (book == null)
         {
+            Console.WriteLine("Book Not Found");
             return null;
         }
+        Console.WriteLine("What do you want to update?");
+        Console.WriteLine("1. Title");
+        Console.WriteLine("2. Author");
+        Console.WriteLine("3. Category");
 
+        int updatechoice = GetUpdateChoice();
+
+        switch (updatechoice)
+        {
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+        }
+        return book;
     }
     public int GetUpdateChoice() 
     {
@@ -442,7 +461,7 @@ class Library
                     break;
                 }
 
-                Console.WriteLine("Choice must be 1 to 2.");
+                Console.WriteLine("Choice must be 1 to 3.");
             }
             else
             {
