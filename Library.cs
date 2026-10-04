@@ -190,23 +190,7 @@ partial class Library
         }
         return Email;
     }
-    public Book SearchBook()
-    {
-
-        int id = GetSearchBookID();
-
-        foreach (Book book in books)
-        {
-            if (book.ID == id)
-            {
-                return book;
-            }
-        }
-        return null;
-
-
-
-    }
+ 
 
     public void BorrowBook()
     {
@@ -237,19 +221,6 @@ partial class Library
 
         }
 
-    }
-
-    public Member SearchMember()
-    {
-        int id = GetMemberID();
-        foreach (Member member in members)
-        {
-            if (member.ID == id)
-            {
-                return member;
-            }
-        }
-        return null;
     }
 
     public void ViewBorrowedBooks()
@@ -330,22 +301,7 @@ partial class Library
 
         return choice;
     }
-    public Book SearchBookByTitle()
-    {
-        string title;
-        Console.WriteLine("Enter the Title of Book");
-        title = Console.ReadLine();
-
-        foreach (Book book in books)
-        {
-            if (book.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()))
-            {
-                return book;
-            }
-
-        }
-        return null;
-    }
+ 
 
     public int GetSearchChoice()
     {
