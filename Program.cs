@@ -81,15 +81,19 @@ class Program
 
                         case 2:
                             Console.WriteLine("Search by Title Selected");
-                            Book booktitle = library.SearchBookByTitle();
+                            List<Book> booktitle = library.SearchBookByTitle();
 
-                            if (booktitle == null) 
+                            if (booktitle.Count == 0) 
                             {
                                 Console.WriteLine("Book title Not Found");
                             }
                             else
                             {
-                                Console.WriteLine($"Book Found: \n{booktitle.Title} \n{booktitle.Author} \n{booktitle.Category} \n{booktitle.IsAvailable}");
+                                foreach(Book book in booktitle)
+                                {
+                                Console.WriteLine($"Book Found: \n{book.Title} \n{book.Author} \n{book.Category} \n{book.IsAvailable}");
+                                Console.WriteLine();
+                                }
                             }
 
                             break;

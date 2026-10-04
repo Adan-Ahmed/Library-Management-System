@@ -15,22 +15,22 @@
         return null;
     }
 
-    public Book SearchBookByTitle()
-    {
-        string title;
-        Console.WriteLine("Enter the Title of Book");
-        title = Console.ReadLine();
+    //public Book SearchBookByTitle()
+    //{
+    //    string title;
+    //    Console.WriteLine("Enter the Title of Book");
+    //    title = Console.ReadLine();
 
-        foreach (Book book in books)
-        {
-            if (book.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()))
-            {
-                return book;
-            }
+    //    foreach (Book book in books)
+    //    {
+    //        if (book.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()))
+    //        {
+    //            return book;
+    //        }
 
-        }
-        return null;
-    }
+    //    }
+    //    return null;
+    //}
 
     public Member SearchMember()
     {
