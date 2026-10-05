@@ -23,8 +23,9 @@
         }
         else
         {
+            BorrowRecord borrowrecord = new BorrowRecord(book, member, DateTime.Now, DateTime.Now.AddDays(7));
             book.IsAvailable = false;
-            member.BorrowedBooks.Add(book);
+            member.BorrowedBooks.Add(borrowrecord);
             Console.WriteLine("Book Borrowed Successfully");
 
         }
@@ -46,9 +47,12 @@
             return;
         }
 
-        foreach (Book book in member.BorrowedBooks)
+        foreach (BorrowRecord record in member.BorrowedBooks)
         {
-            Console.WriteLine($"Book ID:{book.ID} \nBook Title: {book.Title}");
+            Console.WriteLine($"Book ID:{record.Book.ID} " +
+                $"\nBook Title: {record.Book.Title} " +
+                $"\nBorrow Date: {record.BorrowDate} " +
+                $"\nDue Date: {record.DueDate}");
         }
     }
 
@@ -61,26 +65,26 @@
             return;
         }
         int id = GetSearchBookID();
-        Book foundbook = null;
+        BorrowRecord foundRecord = null;
 
-        foreach (Book book in member.BorrowedBooks)
+        foreach (BorrowRecord record in member.BorrowedBooks)
         {
-            if (id == book.ID)
+            if (id == record.Book.ID)
             {
-                foundbook = book;
+                foundRecord = record;
                 break;
             }
         }
 
 
-        if (foundbook == null)
+        if (foundRecord == null)
         {
             Console.WriteLine("This member did not borrow this book");
             return;
         }
-        Console.WriteLine($"Book found successfully: \n{foundbook.ID} : {foundbook.Title}");
-        foundbook.IsAvailable = true;
-        member.BorrowedBooks.Remove(foundbook);
+        Console.WriteLine($"Book found successfully: \n{foundRecord.Book.ID} : {foundRecord.Book.Title}");
+        foundRecord.Book.IsAvailable = true;
+        member.BorrowedBooks.Remove(foundRecord);
         Console.WriteLine("Book returned successfully");
     }
 }
