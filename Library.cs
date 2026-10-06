@@ -37,13 +37,15 @@ partial class Library
         }
     }
 
-    public void CalculateFine(BorrowRecord record) 
+    public int CalculateFine(BorrowRecord record) 
     {
-        if(record.DueDate < DateTime.Now)
+        int fine = 0;
+
+        if (record.DueDate < DateTime.Now)
         {
             TimeSpan overdue = DateTime.Now - record.DueDate;
             int Rupees = 50;
-            double fine = Rupees * overdue.Days;
+            fine = Rupees * overdue.Days;
             Console.WriteLine($"Your fine is: {fine}");
             
         }
@@ -51,6 +53,7 @@ partial class Library
         {
             Console.WriteLine("Book is not overdue");
         }
+        return fine;
     }
 }
 

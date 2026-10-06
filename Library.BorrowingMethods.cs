@@ -85,7 +85,16 @@
             return;
         }
         Console.WriteLine($"Book found successfully: \n{foundRecord.Book.ID} : {foundRecord.Book.Title}");
-        CalculateFine(foundRecord);
+       
+        int fine = CalculateFine(foundRecord);
+        if (fine > 0)
+        {
+            Console.WriteLine($"Your fine is: Rs. {fine}");
+        }
+        else 
+        {
+            Console.WriteLine("No fine. Book returned on time.");
+        }
         foundRecord.Book.IsAvailable = true;
         member.BorrowedBooks.Remove(foundRecord);
         Console.WriteLine("Book returned successfully");
