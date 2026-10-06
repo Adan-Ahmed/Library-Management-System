@@ -1,4 +1,6 @@
-﻿partial class Library
+﻿using Microsoft.VisualBasic;
+
+partial class Library
 {
     private List<Book> books = new List<Book>();
     private List<Member> members = new List<Member>();
@@ -21,6 +23,35 @@
     //    }
     //    return null;
     //}
+
+    public void ShowRemainingTime(BorrowRecord record) 
+    {
+        if (record.DueDate > DateTime.Now) 
+        { 
+            TimeSpan remaining = record.DueDate - DateTime.Now;
+            Console.WriteLine($"You have {remaining.Days} days and {remaining.Hours} hours left.");
+        }
+        else 
+        {
+            Console.WriteLine("Book is Over due");
+        }
+    }
+
+    public void CalculateFine(BorrowRecord record) 
+    {
+        if(record.DueDate < DateTime.Now)
+        {
+            TimeSpan overdue = DateTime.Now - record.DueDate;
+            int Rupees = 50;
+            double fine = Rupees * overdue.Days;
+            Console.WriteLine($"Your fine is: {fine}");
+            
+        }
+        else 
+        {
+            Console.WriteLine("Book is not overdue");
+        }
+    }
 }
 
 

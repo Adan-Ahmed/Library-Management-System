@@ -53,6 +53,8 @@
                 $"\nBook Title: {record.Book.Title} " +
                 $"\nBorrow Date: {record.BorrowDate} " +
                 $"\nDue Date: {record.DueDate}");
+                ShowRemainingTime(record);
+
         }
     }
 
@@ -83,8 +85,10 @@
             return;
         }
         Console.WriteLine($"Book found successfully: \n{foundRecord.Book.ID} : {foundRecord.Book.Title}");
+        CalculateFine(foundRecord);
         foundRecord.Book.IsAvailable = true;
         member.BorrowedBooks.Remove(foundRecord);
         Console.WriteLine("Book returned successfully");
+
     }
 }
