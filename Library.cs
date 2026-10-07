@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
+﻿using System.Text.Json;
 partial class Library
 {
     private List<Book> books = new List<Book>();
@@ -54,6 +53,14 @@ partial class Library
             Console.WriteLine("Book is not overdue");
         }
         return fine;
+    }
+
+
+    public void StoreData() 
+    {
+        string json = JsonSerializer.Serialize(books);
+        File.WriteAllText("books.json", json);
+
     }
 }
 

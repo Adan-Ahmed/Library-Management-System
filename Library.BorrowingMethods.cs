@@ -8,6 +8,14 @@
             Console.WriteLine("Member not found");
             return;
         }
+
+        if (member.BorrowedBooks.Count >= 3)
+        {
+            Console.WriteLine("You cannot borrow more than 3 book. ");
+            return;
+        }
+
+
         Book book = SearchBook();
 
         if (book == null)
@@ -16,6 +24,14 @@
             return;
         }
 
+        foreach (BorrowRecord record in member.BorrowedBooks) 
+        {
+            if(record.Book.ID == book.ID) 
+            {
+                Console.WriteLine("\"Member already has this book\"");
+                return;
+            }
+        }
         if (book.IsAvailable == false)
         {
             Console.WriteLine("Book is already borrowed");

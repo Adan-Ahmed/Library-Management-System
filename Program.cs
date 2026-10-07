@@ -48,6 +48,7 @@ class Program
                 case 1:
                     Console.WriteLine("Add Book Selected");
                     AddBook(library);
+                    library.StoreData();
                     break;
 
                 case 2:
