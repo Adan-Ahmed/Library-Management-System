@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 partial class Library
 {
     private List<Book> books = new List<Book>();
@@ -61,6 +62,17 @@ partial class Library
         string json = JsonSerializer.Serialize(books);
         File.WriteAllText("books.json", json);
 
+    }
+
+    public void LoadData() 
+    {
+        if (!File.Exists("books.json")) 
+        {
+            return;
+        }
+        string json = File.ReadAllText("books.json");
+        List<Book> loadedBooks = JsonSerializer.Deserialize<List<Book>>(json);
+        books = loadedBooks;
     }
 }
 
