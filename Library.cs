@@ -74,6 +74,24 @@ partial class Library
         List<Book> loadedBooks = JsonSerializer.Deserialize<List<Book>>(json);
         books = loadedBooks;
     }
+
+    public void StoreMember()
+    {
+        string json = JsonSerializer.Serialize(members);
+        File.WriteAllText("Member.json", json);
+
+    }
+
+    public void LoadMember()
+    {
+        if (!File.Exists("Member.json"))
+        {
+            return;
+        }
+        string json = File.ReadAllText("Member.json");
+        List<Member> loadedMember = JsonSerializer.Deserialize<List<Member>>(json);
+        members = loadedMember;
+    }
 }
 
 
