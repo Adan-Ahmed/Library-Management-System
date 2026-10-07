@@ -24,6 +24,7 @@ class Program
     {
         Library library = new Library();
         library.LoadBook();
+        library.LoadMember();
         while (true) 
         {
             Console.WriteLine();
@@ -176,6 +177,7 @@ class Program
 
                 case 14:
                     library.StoreBook();
+                    library.StoreMember();
                     Console.WriteLine("Thank you for using Library Management System.");
                     return;
             }
