@@ -57,14 +57,14 @@ partial class Library
     }
 
 
-    public void StoreData() 
+    public void StoreBook() 
     {
         string json = JsonSerializer.Serialize(books);
         File.WriteAllText("books.json", json);
 
     }
 
-    public void LoadData() 
+    public void LoadBook() 
     {
         if (!File.Exists("books.json")) 
         {

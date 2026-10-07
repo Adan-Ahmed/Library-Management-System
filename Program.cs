@@ -23,7 +23,7 @@ class Program
     static void Main(string[] args) 
     {
         Library library = new Library();
-        library.LoadData();
+        library.LoadBook();
         while (true) 
         {
             Console.WriteLine();
@@ -175,7 +175,7 @@ class Program
 
 
                 case 14:
-                    library.StoreData();
+                    library.StoreBook();
                     Console.WriteLine("Thank you for using Library Management System.");
                     return;
             }
