@@ -32,19 +32,15 @@
                 return;
             }
         }
-        if (book.IsAvailable == false)
+        if (!book.IsAvailable)
         {
             Console.WriteLine("Book is already borrowed");
             return;
         }
-        else
-        {
             BorrowRecord borrowrecord = new BorrowRecord(book.ID, member.ID, DateTime.Now, DateTime.Now.AddDays(7));
             book.IsAvailable = false;
             member.BorrowedBooks.Add(borrowrecord);
             Console.WriteLine("Book Borrowed Successfully");
-
-        }
 
     }
 
@@ -66,6 +62,11 @@
         foreach (BorrowRecord record in member.BorrowedBooks)
         {
             Book book = books.Find(b=> b.ID == record.BookID);
+            if(book == null) 
+            {
+                Console.WriteLine("Book not found in the library");
+                continue;
+            }
             Console.WriteLine($"Book ID:{record.BookID} " +
                 $"\nBook Title: {book.Title} " +
                 $"\nBorrow Date: {record.BorrowDate} " +
@@ -102,6 +103,11 @@
             return;
         }
         Book book = books.Find(b => b.ID == foundRecord.BookID);
+        if (book == null)
+        {
+            Console.WriteLine("Book not found in the library");
+            return;
+        }
         Console.WriteLine($"Book found successfully: \n{foundRecord.BookID} : {book.Title}");
        
         int fine = CalculateFine(foundRecord);
