@@ -26,7 +26,7 @@
 
         foreach (BorrowRecord record in member.BorrowedBooks) 
         {
-            if(record.Book.ID == book.ID) 
+            if(record.BookID == book.ID) 
             {
                 Console.WriteLine("\"Member already has this book\"");
                 return;
@@ -39,7 +39,7 @@
         }
         else
         {
-            BorrowRecord borrowrecord = new BorrowRecord(book, member, DateTime.Now, DateTime.Now.AddDays(7));
+            BorrowRecord borrowrecord = new BorrowRecord(book.ID, member.ID, DateTime.Now, DateTime.Now.AddDays(7));
             book.IsAvailable = false;
             member.BorrowedBooks.Add(borrowrecord);
             Console.WriteLine("Book Borrowed Successfully");
@@ -65,8 +65,9 @@
 
         foreach (BorrowRecord record in member.BorrowedBooks)
         {
-            Console.WriteLine($"Book ID:{record.Book.ID} " +
-                $"\nBook Title: {record.Book.Title} " +
+            Book book = books.Find(b=> b.ID == record.BookID);
+            Console.WriteLine($"Book ID:{record.BookID} " +
+                $"\nBook Title: {book.Title} " +
                 $"\nBorrow Date: {record.BorrowDate} " +
                 $"\nDue Date: {record.DueDate}");
                 ShowRemainingTime(record);
@@ -87,7 +88,7 @@
 
         foreach (BorrowRecord record in member.BorrowedBooks)
         {
-            if (id == record.Book.ID)
+            if (id == record.BookID)
             {
                 foundRecord = record;
                 break;
@@ -100,7 +101,8 @@
             Console.WriteLine("This member did not borrow this book");
             return;
         }
-        Console.WriteLine($"Book found successfully: \n{foundRecord.Book.ID} : {foundRecord.Book.Title}");
+        Book book = books.Find(b => b.ID == foundRecord.BookID);
+        Console.WriteLine($"Book found successfully: \n{foundRecord.BookID} : {book.Title}");
        
         int fine = CalculateFine(foundRecord);
         if (fine > 0)
@@ -111,7 +113,7 @@
         {
             Console.WriteLine("No fine. Book returned on time.");
         }
-        foundRecord.Book.IsAvailable = true;
+        book.IsAvailable = true;
         member.BorrowedBooks.Remove(foundRecord);
         Console.WriteLine("Book returned successfully");
 
