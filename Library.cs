@@ -80,6 +80,7 @@ partial class Library
         string json = JsonSerializer.Serialize(members);
         File.WriteAllText("Member.json", json);
 
+
     }
 
     public void LoadMember()
