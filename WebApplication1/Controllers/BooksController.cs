@@ -8,10 +8,11 @@ namespace WebApplication1.Controllers;
 
 public class BooksController : ControllerBase
 {
+    private List<Book> books = new List<Book>();
+
     [HttpGet]
     public List<Book> GetBooks() 
     {
-        List<Book> books = new List<Book>();
         Book book1 = new Book
         {
             Id = 1,
@@ -37,6 +38,13 @@ public class BooksController : ControllerBase
         books.Add(book3);
         return books;
 
+    }
+
+    [HttpPost]
+    public IActionResult AddBook([FromBody] Book book)
+    {
+        books.Add(book);
+        return Ok(book);
     }
 
 }
