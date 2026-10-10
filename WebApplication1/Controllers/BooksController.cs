@@ -17,29 +17,7 @@ public class BooksController : ControllerBase
     [HttpGet]
     public List<Book> GetBooks() 
     {
-        //Book book1 = new Book
-        //{
-        //    Id = 1,
-        //    Title = "API Concept",
-        //    Author = "Sir Rizwan"
-        //};
-        //Book book2 = new Book
-        //{
-        //    Id = 2,
-        //    Title = "C# Fundamentals",
-        //    Author = "Sir Ali"
-        //};
-        //Book book3 = new Book
-        //{
-        //    Id = 3,
-        //    Title = "ASP.NET Core",
-        //    Author = "Sir Shoiab"
-        //};
 
-
-        //_bookService.Books.Add(book1);
-        //_bookService.Books.Add(book2);
-        //_bookService.Books.Add(book3);
         return _bookService.Books;
 
     }
@@ -47,7 +25,26 @@ public class BooksController : ControllerBase
     [HttpPost]
     public IActionResult AddBook([FromBody] Book book)
     {
+        if(_bookService.Books.Any(b => b.Id == book.Id)) 
+        {
+            return BadRequest("A book with this ID already exists.");
+        }
         _bookService.Books.Add(book);
+        return Ok(book);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateBook(int id, [FromBody] Book updateBook)
+    {
+        var book = _bookService.Books.FirstOrDefault(b => b.Id == id);
+
+        if (book == null) 
+        {
+            return NotFound();
+        }
+            book.Title = updateBook.Title;
+            book.Author = updateBook.Author;
+
         return Ok(book);
     }
 
