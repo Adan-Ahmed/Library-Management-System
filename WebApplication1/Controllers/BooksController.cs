@@ -1,4 +1,4 @@
-﻿
+﻿using WebApplication1.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers;
@@ -8,42 +8,46 @@ namespace WebApplication1.Controllers;
 
 public class BooksController : ControllerBase
 {
-    private List<Book> books = new List<Book>();
+    private readonly BookService _bookService;
+    public BooksController(BookService bookService) 
+    {
+        _bookService = bookService;
+    }
 
     [HttpGet]
     public List<Book> GetBooks() 
     {
-        Book book1 = new Book
-        {
-            Id = 1,
-            Title = "API Concept",
-            Author = "Sir Rizwan"
-        };
-        Book book2 = new Book
-        {
-            Id = 2,
-            Title = "C# Fundamentals",
-            Author = "Sir Ali"
-        };
-        Book book3 = new Book
-        {
-            Id = 3,
-            Title = "ASP.NET Core",
-            Author = "Sir Shoiab"
-        };
+        //Book book1 = new Book
+        //{
+        //    Id = 1,
+        //    Title = "API Concept",
+        //    Author = "Sir Rizwan"
+        //};
+        //Book book2 = new Book
+        //{
+        //    Id = 2,
+        //    Title = "C# Fundamentals",
+        //    Author = "Sir Ali"
+        //};
+        //Book book3 = new Book
+        //{
+        //    Id = 3,
+        //    Title = "ASP.NET Core",
+        //    Author = "Sir Shoiab"
+        //};
 
 
-        books.Add(book1);
-        books.Add(book2);
-        books.Add(book3);
-        return books;
+        //_bookService.Books.Add(book1);
+        //_bookService.Books.Add(book2);
+        //_bookService.Books.Add(book3);
+        return _bookService.Books;
 
     }
 
     [HttpPost]
     public IActionResult AddBook([FromBody] Book book)
     {
-        books.Add(book);
+        _bookService.Books.Add(book);
         return Ok(book);
     }
 
