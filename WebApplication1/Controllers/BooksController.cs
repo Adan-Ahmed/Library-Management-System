@@ -12,14 +12,29 @@ public class BooksController : ControllerBase
     public List<Book> GetBooks() 
     {
         List<Book> books = new List<Book>();
-        Book book = new Book
+        Book book1 = new Book
         {
             Id = 1,
             Title = "API Concept",
             Author = "Sir Rizwan"
         };
+        Book book2 = new Book
+        {
+            Id = 2,
+            Title = "C# Fundamentals",
+            Author = "Sir Ali"
+        };
+        Book book3 = new Book
+        {
+            Id = 3,
+            Title = "ASP.NET Core",
+            Author = "Sir Shoiab"
+        };
 
-        books.Add(book);
+
+        books.Add(book1);
+        books.Add(book2);
+        books.Add(book3);
         return books;
 
     }
