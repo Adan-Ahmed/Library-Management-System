@@ -48,4 +48,21 @@ public class BooksController : ControllerBase
         return Ok(book);
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeleteBook(int id)
+    {
+        var book = _bookService.Books.FirstOrDefault(b => b.Id == id);
+
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        _bookService.Books.Remove(book);
+
+        return NoContent();
+    }
+
+
+
 }
